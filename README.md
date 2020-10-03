@@ -1,1 +1,1 @@
-# infa_2020_akimov
+# For Python programming practice
