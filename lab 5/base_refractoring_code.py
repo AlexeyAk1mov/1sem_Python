@@ -25,56 +25,56 @@ def draw_woman(screen, x, y, width, height):
     Параметр width - ширина женщины.
     Параметр height - высота женщины.
     '''
-    circle(screen, COLOR['BROWN'], (x + width // 2, y - height // 5), height // 4)
-    rect(screen, COLOR['BROWN'], (x + int(width * 0.08), y - height // 5, height // 2, height // 2))
+    hair_woman(screen, x, y, width, height) 
     polygon(screen, COLOR['PINK'],
-            [(x + width // 2, y), (x, y + height), (x + width, y + height)])
+            [(x + width // 2, y), (x, y + height), (x + width, y + height)])       
     face(screen, x, y, width, height)
     hands_woman(screen, x, y, width, height)
     legs_woman(screen, x, y, width, height)
 
     
+def hair_woman(screen, x, y, width, height):
+    '''Рисует волосы относительно параметров, заданных для женщины'''
+    circle(screen, COLOR['BROWN'], (x + width // 2, y - height // 5), height // 4)
+    rect(screen, COLOR['BROWN'], (x + int(width * 0.08), y - height // 5, height // 2, height // 2))
+
+
 def face(screen, x, y, width, height):
-    '''
-    Рисует лицо относитльно параметров, заданных для мужчины или женщины.
-    '''
+    '''Рисует лицо относитльно параметров, заданных для мужчины или женщины'''
     circle(screen, COLOR['FACE_COLOR'], (x + width // 2, y - height // 6), height // 5)
     eyes(screen, x, y, width, height)
     nose(screen, x, y, width, height)
     mouth(screen, x, y, width, height)
-    
+
 
 def eyes(screen, x, y, width, height):
-    '''
-    Рисует глаза относитльно параметров, заданных для мужчины или женщины.
-    '''
-    circle(screen, COLOR['WHITE'], (x + int(0.33 * width), y - int(0.22 * height)), height // 17)
-    circle(screen, COLOR['BLACK'], (x + int(0.33 * width), y - int(0.22 * height)), height // 34)    
-    circle(screen, COLOR['WHITE'], (x + int(0.67 * width), y - int(0.22 * height)), height // 17)
-    circle(screen, COLOR['BLACK'], (x + int(0.67 * width), y - int(0.22 * height)), height // 34)
+    '''Рисует глаза относитльно параметров, заданных для мужчины или женщины'''
+    eyes_param = [
+                  (COLOR['WHITE'], 0.33, 17),
+                  (COLOR['BLACK'], 0.33, 34),
+                  (COLOR['WHITE'], 0.67, 17),
+                  (COLOR['BLACK'], 0.67, 34),
+                  ]
+    for j in range(4):
+        circle(screen, eyes_param[j][0] , (x + int(eyes_param[j][1] * width),
+            y - int(0.22 * height)), height // eyes_param[j][2])            
         
 
 def nose(screen, x, y, width, height):
-    '''
-    Рисует нос относитльно параметров, заданных для мужчины или женщины.
-    '''
+    '''Рисует нос относитльно параметров, заданных для мужчины или женщины'''
     line(screen, COLOR['BLACK'], 
         (x + width // 2, y - int(0.2 * height)), (x + width // 2, y - int(height * 0.2)), 1)
     
 
 def mouth(screen, x, y, width, height):
-    '''
-    Рисует рот относитльно параметров, заданных для мужчины или женщины.
-    '''
+    '''Рисует рот относитльно параметров, заданных для мужчины или женщины'''
     arc(screen, COLOR['BLACK'], 
-        (x + int(0.35 * width), y - int(0.18 * height), int(0.3 * width), height // 6),
+        (x + int(0.35 * width), y - int(0.18 * height), int(0.3 * width), height // 6), 
         1.1 * math.pi, 1.9 * math.pi, 2)
     
 
 def hands_man(screen, x, y, width, height):
-    '''
-    Рисует руки относитльно параметров, заданных для мужчины.
-    '''
+    '''Рисует руки относитльно параметров, заданных для мужчины'''
     hands_man_param = [
                        ((x + width // 5, y + height // 10), (x - width // 2, y + int(0.65 * height))),
                        ((x + int(0.8 * width), y + height // 10), (x + int(1.6 * width), y + height // 2)),
@@ -84,9 +84,7 @@ def hands_man(screen, x, y, width, height):
 
     
 def hands_woman(screen, x, y, width, height):
-    '''
-    Рисует руки относитльно параметров, заданных для женщины.
-    '''
+    '''Рисует руки относитльно параметров, заданных для женщины'''
     hands_woman_param = [
                          ((x + width//5, y + height//10), (x - width // 2, y + int(0.65 * height))),
                          ((x + int(0.75 * width), y + height//10), (x + int(1.3 * width), y + int(0.3 * height))),
@@ -97,28 +95,24 @@ def hands_woman(screen, x, y, width, height):
 
     
 def legs_man(screen, x, y, width, height):
-    '''
-    Рисует ноги относитльно параметров, заданных для мужчины.
-    '''
+    '''Рисует ноги относитльно параметров, заданных для мужчины'''
     legs_man_param = [
                       ((x + width // 3, y + int(0.95 * height)), (x + width // 20, y + int(1.5 * height))),
                       ((x + width // 20, y + int(1.5 * height)), (x - width // 4, y + int(1.5 * height) + 2)),
                       ((x + 2 * width // 3, y + int(0.95 * height)), (x + 3 * width // 4, y + int(1.49 * height))),
-                      ((x + 3 * width//4, y + int(1.49 * height)), (x + width, y + int(1.5 * height)))
+                      ((x + 3 * width//4, y + int(1.49 * height)), (x + width, y + int(1.5 * height))),
                       ]
     for i_m in range(4):
         line(screen, COLOR['BLACK'], legs_man_param[i_m][0], legs_man_param[i_m][1], 2)
 
     
 def legs_woman(screen, x, y, width, height):
-    '''
-    Рисует ноги относитльно параметров, заданных для женщины.
-    '''
+    '''Рисует ноги относитльно параметров, заданных для женщины'''
     legs_woman_param = [
                         ((x + width // 3, y + height), (x - width // 10, y + int(1.45 * height))),
                         ((x - width // 10, y + int(1.45 * height)), (x - int(0.4 * width), y + int(1.45 * height))),
                         ((x + int(width * 0.6), y + height), (x + int(width * 0.8), y + int(1.45 * height))),
-                        ((x + int(width * 0.8), y + int(1.45 * height)), (x + int(1.1 * width), y + int(1.5 * height)))
+                        ((x + int(width * 0.8), y + int(1.45 * height)), (x + int(1.1 * width), y + int(1.5 * height))),
                         ]
     for i_w in range(4):
         line(screen, COLOR['BLACK'], legs_woman_param[i_w][0], legs_woman_param[i_w][1], 2)
