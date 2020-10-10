@@ -58,7 +58,8 @@ def nose(screen, x, y, width, height):
     '''
     Рисует нос относитльно параметров, заданных для мужчины или женщины.
     '''
-    line(screen, COLOR['BLACK'], (x + width // 2, y - int(0.2 * height)), (x + width // 2, y - int(height * 0.2)), 1)
+    line(screen, COLOR['BLACK'], 
+        (x + width // 2, y - int(0.2 * height)), (x + width // 2, y - int(height * 0.2)), 1)
     
 
 def mouth(screen, x, y, width, height):
@@ -66,7 +67,7 @@ def mouth(screen, x, y, width, height):
     Рисует рот относитльно параметров, заданных для мужчины или женщины.
     '''
     arc(screen, COLOR['BLACK'], 
-        (x + int(0.35 * width), y - int(0.18 * height), int(0.3 * width), height // 6), 
+        (x + int(0.35 * width), y - int(0.18 * height), int(0.3 * width), height // 6),
         1.1 * math.pi, 1.9 * math.pi, 2)
     
 
@@ -74,20 +75,25 @@ def hands_man(screen, x, y, width, height):
     '''
     Рисует руки относитльно параметров, заданных для мужчины.
     '''
-    line(screen, COLOR['BLACK'], (x + width // 5, y + height // 10), (x - width // 2, y + int(0.65 * height)), 2)
-    line(screen, COLOR['BLACK'], (x + int(0.8 * width), y + height // 10), (x + int(1.6 * width), y + height // 2))
+    hands_man_param = [
+                       ((x + width // 5, y + height // 10), (x - width // 2, y + int(0.65 * height))),
+                       ((x + int(0.8 * width), y + height // 10), (x + int(1.6 * width), y + height // 2)),
+                       ]
+    for k_m in range(2):
+        line(screen, COLOR['BLACK'], hands_man_param[k_m][0], hands_man_param[k_m][1], 2)
 
     
 def hands_woman(screen, x, y, width, height):
     '''
     Рисует руки относитльно параметров, заданных для женщины.
     '''
-    line(screen, COLOR['BLACK'], 
-         (x + width//5, y + height//10), (x - width // 2, y + int(0.65 * height)), 2)
-    line(screen, COLOR['BLACK'],
-         (x + int(0.75 * width), y + height//10), (x + int(1.3 * width), y + int(0.3 * height)), 2)
-    line(screen, COLOR['BLACK'],
-         (x + int(1.3 * width), y + int(0.3 * height)), (x + int(1.9 * width), y + height // 4), 2)
+    hands_woman_param = [
+                         ((x + width//5, y + height//10), (x - width // 2, y + int(0.65 * height))),
+                         ((x + int(0.75 * width), y + height//10), (x + int(1.3 * width), y + int(0.3 * height))),
+                         ((x + int(1.3 * width), y + int(0.3 * height)), (x + int(1.9 * width), y + height // 4)),
+                         ]
+    for k_w in range(3):
+        line(screen, COLOR['BLACK'], hands_woman_param[k_w][0], hands_woman_param[k_w][1], 2)
 
     
 def legs_man(screen, x, y, width, height):
@@ -102,15 +108,7 @@ def legs_man(screen, x, y, width, height):
                       ]
     for i_m in range(4):
         line(screen, COLOR['BLACK'], legs_man_param[i_m][0], legs_man_param[i_m][1], 2)
-    '''line(screen, COLOR['BLACK'],
-         (x + width // 3, y + int(0.95 * height)), (x + width // 20, y + int(1.5 * height)), 2)
-    line(screen, COLOR['BLACK'],
-         (x + width // 20, y + int(1.5 * height)), (x - width // 4, y + int(1.5 * height) + 2), 2)
-    line(screen, COLOR['BLACK'],
-         (x + 2 * width // 3, y + int(0.95 * height)), (x + 3 * width // 4, y + int(1.49 * height)), 2)
-    line(screen, COLOR['BLACK'],
-         (x + 3 * width//4, y + int(1.49 * height)), (x + width, y + int(1.5 * height)), 2)'''
-    
+
     
 def legs_woman(screen, x, y, width, height):
     '''
