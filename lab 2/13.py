@@ -1,43 +1,38 @@
 import turtle
 
+def moving(x, y):
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+
+def draw_eye(size=50):
+    turtle.color('blue')
+    turtle.begin_fill()
+    turtle.circle(size)
+    turtle.end_fill()
+    
+
 turtle.shape('turtle')
 turtle.color('yellow')
 turtle.speed(10)
 
-turtle.penup()
-turtle.goto(0, -200)
-turtle.pendown()
+moving(0, -200)
 turtle.begin_fill()
 turtle.circle(200)
 turtle.end_fill()
 
-turtle.penup()
-turtle.goto(-70, 30)
-turtle.pendown()
-turtle.color('blue')
-turtle.begin_fill()
-turtle.circle(50)
-turtle.end_fill()
+moving(-70, 30)
+draw_eye()
+moving(70, 30)
+draw_eye()
 
-turtle.penup()
-turtle.goto(70, 30)
-turtle.pendown()
-turtle.color('blue')
-turtle.begin_fill()
-turtle.circle(50)
-turtle.end_fill()
-
-turtle.penup()
-turtle.goto(0, 30)
-turtle.pendown()
+moving(0, 30)
 turtle.color('brown')
 turtle.width(10)
 turtle.right(90)
 turtle.forward(60)
 
-turtle.penup()
-turtle.goto(120, 0)
-turtle.pendown()
+moving(120, 0)
 turtle.color('red')
 turtle.width(20)
 turtle.circle(-120,180)
