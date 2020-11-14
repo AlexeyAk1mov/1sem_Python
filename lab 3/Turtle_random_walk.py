@@ -7,3 +7,4 @@ i = 1
 while i < i+1:
     tr.forward(50 * random())
     tr.left(randint(1, 180))
+    
